@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+		
+
+<changeSet  author="wojciech"  id="2">  
+    <insert schemaName="public"  
+            tableName="drone">  
+        <column  name="drone_name"  value="GOCLEVER SKY"/>
+        <column  name="drone_model"  value="EAGLE DRON"/>
+        <column  name="max_altitude"  value="5"/>
+        <column  name="max_speed"  value="20"/> 
+        <column  name="max_range"  value="80"/>   
+    </insert>  
+</changeSet>
+</databaseChangeLog>
