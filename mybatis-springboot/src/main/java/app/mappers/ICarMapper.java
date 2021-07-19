@@ -1,11 +1,13 @@
-package mappers;
+package app.mappers;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
-import models.Car;
+import app.models.Car;
 
 @Mapper
 public interface ICarMapper {
@@ -19,6 +21,14 @@ public interface ICarMapper {
 	
 	@Select("SELECT id, name, model, rental_id FROM CAR")
 	Iterable<Car> findAll();
+	
+	@Delete("DELETE FROM CAR WHERE id = #{id}")
+	void deleteById(long id);
+	
+	@Update("UPDATE CAR"
+			+ "SET name = #{name}, model = #{model}, rental_id = #{rental_id}"
+			+ "WHERE id = #{id}")
+	Car updateById(long id, Car car);
 	
 	
 

@@ -3,8 +3,8 @@ package app;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import mappers.ICarMapper;
-import models.Car;
+import app.mappers.ICarMapper;
+import app.models.Car;
 
 @SpringBootApplication
 public class MybatisSpringbootApplication {

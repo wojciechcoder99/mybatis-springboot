@@ -1,11 +1,11 @@
-package models;
+package app.models;
 
 public class Car {
 	
 	private long id;
 	private String name;
 	private String model;
-	private Rental rental;
+	private long rental_id;
 	
 	public long getId() {
 		return id;
@@ -31,10 +31,10 @@ public class Car {
 		this.name = name;
 	}
 	
-	public Rental getRental() {
-		return rental;
+	public long getRental_id() {
+		return rental_id;
 	}
-	public void setRental(Rental rental) {
-		this.rental = rental;
+	public void setRental_id(long id) {
+		this.rental_id = id;
 	}
 }

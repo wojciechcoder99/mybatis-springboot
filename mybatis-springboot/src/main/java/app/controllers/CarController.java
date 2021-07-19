@@ -1,16 +1,18 @@
-package controllers;
+package app.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mappers.ICarMapper;
-import models.Car;
+import app.mappers.ICarMapper;
+import app.models.Car;
 
 @RestController
 @RequestMapping("/api/cars")
@@ -43,5 +45,26 @@ public class CarController {
 			return new ResponseEntity<Car>(car, HttpStatus.CREATED);
 		}
 		else return new ResponseEntity<Car>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Car> deleteCar(@PathVariable long id) {
+		if (carMapper.findById(id) != null) {
+			carMapper.deleteById(id);
+			return new ResponseEntity<Car>(HttpStatus.OK);
+		}
+		else return new ResponseEntity<Car>(HttpStatus.NOT_FOUND);
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Car> deleteCar(@PathVariable long id, @RequestBody Car car) {
+		if (carMapper.findById(id) != null) {
+			carMapper.updateById(id, car);
+			return new ResponseEntity<Car>(car,HttpStatus.OK);
+		}
+		else {
+			carMapper.save(car);
+			return new ResponseEntity<Car>(car, HttpStatus.CREATED);
+		}
 	}
 }
